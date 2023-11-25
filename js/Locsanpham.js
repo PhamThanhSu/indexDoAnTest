@@ -562,38 +562,17 @@ const ArrayListProducts = [
 ];   
 //Thêm mảng sản phẩm vào Local
 localStorage.setItem('ArrayListProducts', JSON.stringify(ArrayListProducts));
-
-//Hàm lọc
 var main = document.getElementById('container-none-filter')
 var divfiltersearch = document.getElementById('container-filter-search');
-var btnsearch = document.getElementById('btn-search');
-btnsearch.addEventListener('click', function(){
+
+function handleSearchFileresult() {
     main.style.display = 'none';
     divfiltersearch.style.display = 'block';
-    //Lấy giá trị mảng sản phẩm từ LocalStorage
-    const storedArray = JSON.parse(localStorage.getItem('ArrayListProducts'));
-    // JS cho phần tìm kiếm
-    var searchvalue = document.getElementById('search').value.toLowerCase();
-
-    // Lưu giá trị tìm kiếm vào LocalStorage
-    localStorage.setItem('filtertest1', searchvalue);
-
-    // Lấy giá trị tìm kiếm từ LocalStorage
-    const filtertest1 = localStorage.getItem('filtertest1');
-    //Lấy giá trị mảng sản phẩm từ LocalStorage
-    const mangdaloc = JSON.parse(localStorage.getItem('filteredProducts'));
-    if (filtertest1) {
-        const searchResult = storedArray.filter(product => product.name.toLowerCase().includes(filtertest1));
-        if (searchResult.length > 0) {
-            ListSellingProductss(searchResult);
-
-        } else {
-            displaySearchResultMessage("Không tìm thấy kết quả phù hợp.");
-        }
-    } else {
-        ListSellingProductss(storedArray);
-    }
-});
+    const searchTerm = document.getElementById('search').value;
+    var filtertest1 = [searchTerm.toString()]; // Đưa giá trị vào mảng mới
+    localStorage.setItem('filtertest1', JSON.stringify(filtertest1));
+    return false; // Ngăn chặn việc gửi biểu mẫu
+}
 
 function handleeFilterFileresult(filterValue) {
     main.style.display = 'none';
@@ -605,27 +584,32 @@ function handleeFilterFileresult(filterValue) {
         vga: null,
         phanloai: null,
     };
-        // Lấy giá trị từ thuộc tính 'value'
+    // Lấy giá trị từ thuộc tính 'value'
     filterValue = filterValue.getAttribute('value');
-    console.log(filterValue);
-    //So sánh mảng các mục cần tìm
+
+    // JS cho phần tìm kiếm
+    const searchTerm = document.getElementById('search').value;
+    var filtertest1 = [searchTerm.toString()]; // Đưa giá trị vào mảng mới
+    localStorage.setItem('filtertest1', JSON.stringify(filtertest1));
+
+    // So sánh mảng các mục cần tìm
     if (['1', '2', '3', '4'].includes(filterValue)) {
         filter.price = filterValue;
-    } else if (['ASUS', 'ACER', 'MSI', 'LENOVO', 'DELL', 'HP', 'APPLE'].includes(filterValue)) {
+    } else if (['ASUS', 'ACER', 'MSI', 'LENOVO', 'DELL', 'HP', 'LG'].includes(filterValue)) {
         filter.brand = filterValue;
     } else if (['Intel Core i3', 'Intel Core i5', 'Intel Core i7', 'Intel Core i9', 'ADM Ryzen', 'Xeon'].includes(filterValue)) {
-        filter.cpu = filterValue;   
-    } else if (['oldgaming', 'oldvanphong', 'new99', 'other','gaming', 'doanhnhan', 'dohoa'].includes(filterValue)) {
+        filter.cpu = filterValue;
+    } else if (['oldgaming', 'oldvanphong', 'new99', 'other', 'gaming', 'doanhnhan', 'dohoa'].includes(filterValue)) {
         filter.phanloai = filterValue;
     }
 
     //Chọn ra phần tử lọc thương hiệu
-    const brandarray = filter.brand ? [filter.brand] : ['ASUS', 'ACER', 'MSI', 'LENOVO', 'DELL', 'HP', 'APPLE'];
+    const brandarray = filter.brand ? [filter.brand] : ['ASUS', 'ACER', 'MSI', 'LENOVO', 'DELL', 'HP', 'LG'];
     localStorage.setItem('brandarray', JSON.stringify(brandarray));
-    
+
     var filtertest = JSON.parse(localStorage.getItem('filtertest')) || [];
     filtertest.push(filterValue);
-    
+
     var index = filtertest.length;
     if (index > 1) {
         filtertest.splice(0, 1);
@@ -634,22 +618,31 @@ function handleeFilterFileresult(filterValue) {
     localStorage.setItem('filtertest', JSON.stringify(filtertest));
     localStorage.setItem('filter', JSON.stringify(filter));
 
+    // Gọi hàm ListSellingProducts với các filtertest
+    ListSellingProducts(storedArray, filtertest);
+
     console.log(filtertest);
     console.log(storedArray);
-    return false; // Ngăn chặn việc gửi biểu mẫu    
+    return false;
 }
+
 //Lấy giá trị mảng sản phẩm từ LocalStorage
-const storedArray = JSON.parse(localStorage.getItem('ArrayListProducts'));
+const storedJsonString = localStorage.getItem('ArrayListProducts');
+// Chuyển đổi chuỗi JSON thành mảng
+const storedArray = JSON.parse(storedJsonString);
 // Lấy giá trị filtertest từ localStorage
 const filtertest = JSON.parse(localStorage.getItem('filtertest'));
 //Lấy giá trị brandaray từ local
 brandarray = JSON.parse(localStorage.getItem('brandarray'));
- // Đảm bảo rằng filterarr đã được khởi tạo
-const filterarr = JSON.parse(localStorage.getItem('filter')) || {};
-filtertest1 = JSON.parse(localStorage.getItem('filtertest1')) || [];  
+//Lấy giá trị của hàm filter từ local
+const storedJsonfilterString = localStorage.getItem('filter');
+const filterarr = JSON.parse(storedJsonfilterString);
+const filtertest1 = JSON.parse(localStorage.getItem('filtertest1')) || [];
+console.log(filtertest1);
+
 // Gọi hàm ListSellingProducts với các filtertest
-console.log(filtertest);
 ListSellingProducts(storedArray, filtertest);
+
 function ListSellingProducts(storedArray, filtertest = []) {
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
@@ -665,15 +658,16 @@ function ListSellingProducts(storedArray, filtertest = []) {
         if (searchTerm === 'dohoa') {
             document.getElementById('filter-result').innerText = `Laptop Thiết kế - Đồ họa`;
         }
-        
-    });  //Hiện chữ thể hiện phân loại laptop
+    });
+
+    let filteredProducts = [];
     let s = '';
     for (let i = 0; i < storedArray.length; i++) {
         const product = storedArray[i];
         var anh = product.img;
         var thuonghieu = product.thuonghieu;
         var phanloai = product.phanloai;
-        var name = product.name;
+        var name = product.name.toLowerCase();;
         var cpu = product.cpu;
         var ram = product.ram;
         var ssd = product.ssd;
@@ -682,14 +676,19 @@ function ListSellingProducts(storedArray, filtertest = []) {
         var pricecompare = product.pricecompare;
         var pricehighlight = product.pricehighlight;
         var labelonsale = product.labelonsale;
-            // Kiểm tra điều kiện lọc hãng
-        if(filterarr.brand){
+        // Kiểm tra điều kiện tìm kiếm
+        if (!(name.includes(filtertest1[0]))) {
+            continue;
+        }
+
+        // Kiểm tra điều kiện lọc, nếu filterValue không rỗng thì thực hiện lọc
+        if (filterarr.brand) {
             if (!filtertest.includes(thuonghieu)) {
                 continue;
             }
         }
-         // Kiểm tra điều kiện lọc giá
-        if(filterarr.price)      
+        // Kiểm tra điều kiện lọc giá
+        if (filterarr.price)         //Dùng filtertest hay filterarr.{Gía trị cần lọc} đều được
         {
             if (pricehighlight < 10000000 && !filtertest.includes('1')) continue;
             if (pricehighlight >= 10000000 && pricehighlight <= 15000000 && !filtertest.includes('2')) continue;
@@ -697,18 +696,20 @@ function ListSellingProducts(storedArray, filtertest = []) {
             if (pricehighlight > 25000000 && !filtertest.includes('4')) continue;
         }
         if (filterarr.cpu) {
-            if(!filtertest.includes(cpu))
-              continue;
-         }
- 
-         if (filterarr.vga) {
-             if(filtervga.includes(vga) == false)
-               continue;
-          }
+            if (!filtertest.includes(cpu))
+                continue;
+        }
+
+        if (filterarr.vga) {
+            if (filtervga.includes(vga) == false)
+                continue;
+        }
         // Kiểm tra điều kiện lọc, nếu phanloai không rỗng và không nằm trong filtertest thì tiếp tục vòng lặp
         if (filterarr.phanloai && !filtertest.includes(phanloai)) {
             continue;
-         }
+        }
+
+        filteredProducts.push(product);
         s += `
             <div class="item-show-filter" id="item-show">
                 <a href="#">
@@ -722,7 +723,7 @@ function ListSellingProducts(storedArray, filtertest = []) {
                         <div class="cpu">
                             <span>${cpu}</span>
                         </div>
-                        <div class ="vga">
+                        <div class="vga">
                             <span>${vga}</span>
                         </div>
                         <div class="ram">
@@ -747,7 +748,8 @@ function ListSellingProducts(storedArray, filtertest = []) {
                 </div>
             </div>`;
     }
-    document.getElementById("item-selling-products").innerHTML = s;   
+    document.getElementById("item-selling-products").innerHTML = s;
+    localStorage.setItem('filteredProducts', JSON.stringify(filteredProducts));
 }
 
 

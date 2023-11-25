@@ -22,6 +22,170 @@
     <link rel="stylesheet" href="./cssDoAn/listdaquasudung.css">
     <script src="./js/script[1].js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <style>
+        .hang{
+            display: flex;
+        }
+        .congdung{
+            font-size: 25px;
+            width: 40%;
+            height:60px ;
+            margin-top: 16px;
+            line-height: 60px;
+            font-weight: bolder;   
+        }
+        .nhan{
+            width: 60%;
+            list-style-type: none;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .nhan li{
+            width: 14%;
+            margin: 10px;
+            height: 35px;
+            display: inline-table;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nhan li:hover{
+            cursor: pointer;
+            background-color: rgb(55, 173, 194);
+        }
+        #container-gaming{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #list-gaming{
+            width: 100%;
+            display: flex;
+            border: solid red 2px;
+            flex-wrap: wrap;
+            justify-content: start;
+        }
+        .listPage-gaming{
+            padding: 10px;
+            text-align: center;
+            list-style: none;
+           
+        }
+        .listPage-gaming li{
+            background-color: white;
+            padding: 15px;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .listPage-gaming .active{
+            background-color: aqua;
+            color: white;
+        }
+        #container-doanhnhan{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #list-doanhnhan {
+            width: 100%;
+            display: flex;
+            border: solid red 2px;
+            flex-wrap: wrap;
+            justify-content: start;
+        }
+        .listPage-doanhnhan{
+            padding: 10px;
+            text-align: center;
+            list-style: none;
+           
+        }
+        .listPage-doanhnhan li{
+            background-color: white;
+            padding: 15px;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .listPage-doanhnhan .active{
+            background-color: aqua;
+            color: white;
+        }
+        #container-dohoa{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #list-dohoa{
+            width: 100%;
+            display: flex;
+            border: solid red 2px;
+            flex-wrap: wrap;
+            justify-content: start;
+        }
+        .listPage-dohoa{
+            padding: 10px;
+            text-align: center;
+            list-style: none;
+           
+        }
+        .listPage-dohoa li{
+            background-color: white;
+            padding: 15px;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .listPage-dohoa .active{
+            background-color: aqua;
+            color: white;
+        }
+        #content{
+            margin-top: 15px;
+         }
+         .title{
+             font-size: 18px;
+             cursor: pointer;
+             overflow: hidden;
+             font-weight: bolder;
+             display: -webkit-box;
+             -webkit-line-clamp: 2;
+             -webkit-box-orient: vertical;
+         }
+         .itemproduct .content .des div{
+             margin-top: 10px;
+             cursor: pointer;
+         }
+         .itemproduct .content .price{
+             cursor: pointer;
+         }
+         .price del {
+             font-size: 13px;
+             font-weight: bold;
+             color:#6D6E72;
+             margin-left: 10px;
+         }
+         .price--default{
+             display: flex;
+             align-items: center;
+             margin-top: 10px;
+             margin-bottom: 10px;
+         }
+         .price--highlight{
+             font-weight: bold;
+             color: red;
+         }
+         .label--on-sale{
+             padding: 0 4px;
+             background: red;
+             border-radius: 3px;
+             color:white;
+             border: 1px solid #E30019;
+             line-height: 16px;
+             font-size: 13px; 
+         }
+         .itemproduct{
+            width: 19%;
+         }
+    </style>
 </head>
 <body>
     <div class="all" id="all" style="width: 100%; background-color: rgb(222, 225, 230); position: absolute; top: 0; left: 0; ">
@@ -640,284 +804,59 @@
             </div> 
             <!--Laptop Gaming-->
             <div class="selling-show-gaming" id="selling-show-gaming">
-                <div class="border-title-selling">
-                    <div class="title-selling">
-                        <div class="laptop-banchay">
-                            <a href="#">
-                                <p>Laptop Gaming</p>
-                            </a>
-                        </div>
-                        <hr class="title-divider">
-                        <div class="mienphi-giaohang">
-                            <i class="fa fa-truck" aria-hidden="true" id="icon"></i>
-                            <p>Miễn phí giao hàng</p>
-                        </div>
-                        <div class="list-tenhang">
-                            <div>
-                                <a href="#">
-                                  <p>Acer</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Asus</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Lenovo</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Dell</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                <p>Hewlett-Packard</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>MSI</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Apple</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="selling-products-gaming">
-                    <div class="item-selling-products-gaming" id="item-selling-products-gaming">
-                        <div class="item-show-gaming"> <!--Có thể xóa phần này-->
-                            <a href="#">
-                                <img src="./image/selling-products.webp">
-                            </a>
-                            <div class="detial">
-                                <h3 class="name-product">
-                                    <a id="name" href="#">Laptop LG Gram 2023 14Z90R GAH53A5</a>
-                                </h3>
-                                <div class="technical">
-                                    <div class="cpu">
-                                        <span>i5-1340P</span>
-                                    </div>
-                                    <div class="vga">
-                                        <span>Onboard</span>
-                                    </div>
-                                    <div class="ram">
-                                        <span>16 GB</span>
-                                    </div>
-                                    <div class="ssd">
-                                        <span>256 GB</span>
-                                    </div>
-                                    <div class="lcd">
-                                        <span>14 inch FHD+ IPS</span>
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="price--compare"><del>32.490.000₫</del></div>
-                                    <div class="price--default">
-                                        <span class="price--highlight">25.490.000₫</span>
-                                        <span class="label--on-sale">-21%</span>			
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-                <div id="pagenumber" style="clear: both;" align="center"> 
+                <div class="hang">
+                    <div class="congdung">| LAPTOP HIỆU NĂNG - GAMING</div>
+                    <ul class="nhan">
+                        <li> MSI</li>
+                        <li> DELL </li>
+                        <li> ASUS </li>
+                        <li> HP </li>
+                        <li> LENOVO </li>
+                        <li> ACER</li>
+                        <li> APPLE </li>
+                    </ul>
+                </div>  
+                <div class="container-gaming" id="container-gaming">
+                    <div class="list1-gaming" id="list-gaming"></div>
+                    <div class="listPage-gaming" id="pagenumber-gaming"></div>
                 </div>
             </div>
             <!--Laptop Doanh Nhân-->
             <div class="selling-show-doanhnhan" id="selling-show-doanhnhan">
-                <div class="border-title-selling">
-                    <div class="title-selling">
-                        <div class="laptop-banchay">
-                            <a href="#">
-                                <p>Laptop Doanh nhân</p>
-                            </a>
-                        </div>
-                        <hr class="title-divider">
-                        <div class="mienphi-giaohang">
-                            <i class="fa fa-truck" aria-hidden="true" id="icon"></i>
-                            <p>Miễn phí giao hàng</p>
-                        </div>
-                        <div class="list-tenhang">
-                            <div>
-                                <a href="#">
-                                  <p>Acer</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Asus</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Lenovo</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Dell</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                <p>Hewlett-Packard</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>MSI</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Apple</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hang">
+                    <div class="congdung">| LAPTOP DOANH NHÂN - BUSINESS</div>
+                    <ul class="nhan">
+                        <li> MSI</li>
+                        <li> DELL </li>
+                        <li> ASUS </li>
+                        <li> HP </li>
+                        <li> LENOVO </li>
+                        <li> ACER</li>
+                        <li> APPLE </li>
+                    </ul>
+                </div>  
+                <div class="container-doanhnhan" id="container-doanhnhan">
+                    <div class="list1-doanhnhan" id="list-doanhnhan"></div>
+                    <div class="listPage-doanhnhan" id="pagenumber-doanhnhan"></div>
                 </div>
-                <div class="selling-products-doanhnhan">
-                    <div class="item-selling-products-doanhnhan" id="item-selling-products-doanhnhan">
-                        <div class="item-show-doanhnhan"> <!--Có thể xóa phần này-->
-                            <a href="#">
-                                <img src="./image/selling-products.webp">
-                            </a>
-                            <div class="detial">
-                                <h3 class="name-product">
-                                    <a id="name" href="#">Laptop LG Gram 2023 14Z90R GAH53A5</a>
-                                </h3>
-                                <div class="technical">
-                                    <div class="cpu">
-                                        <span>i5-1340P</span>
-                                    </div>
-                                    <div class="vga">
-                                        <span>Onboard</span>
-                                    </div>
-                                    <div class="ram">
-                                        <span>16 GB</span>
-                                    </div>
-                                    <div class="ssd">
-                                        <span>256 GB</span>
-                                    </div>
-                                    <div class="lcd">
-                                        <span>14 inch FHD+ IPS</span>
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="price--compare"><del>32.490.000₫</del></div>
-                                    <div class="price--default">
-                                        <span class="price--highlight">25.490.000₫</span>
-                                        <span class="label--on-sale">-21%</span>			
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-                <div id="pagenumber3" style="clear: both;" align="center"></div>
             </div>
             <!--Laptop Đồ Họa-->
             <div class="selling-show-dohoa" id="selling-show-dohoa">
-                <div class="border-title-selling">
-                    <div class="title-selling">
-                        <div class="laptop-banchay">
-                            <a href="#">
-                                <p>Laptop Thiết kế - Đồ họa/p>
-                            </a>
-                        </div>
-                        <hr class="title-divider">
-                        <div class="mienphi-giaohang">
-                            <i class="fa fa-truck" aria-hidden="true" id="icon"></i>
-                            <p>Miễn phí giao hàng</p>
-                        </div>
-                        <div class="list-tenhang">
-                            <div>
-                                <a href="#">
-                                  <p>Acer</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Asus</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Lenovo</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Dell</p>
-                                  </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                <p>Hewlett-Packard</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>MSI</p>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#">
-                                    <p>Apple</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="selling-products-dohoa">
-                    <div class="item-selling-products-dohoa" id="item-selling-products-dohoa">
-                        <div class="item-show-dohoa"> <!--Có thể xóa phần này-->
-                            <a href="#">
-                                <img src="./image/selling-products.webp">
-                            </a>
-                            <div class="detial">
-                                <h3 class="name-product">
-                                    <a id="name" href="#">Laptop LG Gram 2023 14Z90R GAH53A5</a>
-                                </h3>
-                                <div class="technical">
-                                    <div class="cpu">
-                                        <span>i5-1340P</span>
-                                    </div>
-                                    <div class="vga">
-                                        <span>Onboard</span>
-                                    </div>
-                                    <div class="ram">
-                                        <span>16 GB</span>
-                                    </div>
-                                    <div class="ssd">
-                                        <span>256 GB</span>
-                                    </div>
-                                    <div class="lcd">
-                                        <span>14 inch FHD+ IPS</span>
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="price--compare"><del>32.490.000₫</del></div>
-                                    <div class="price--default">
-                                        <span class="price--highlight">25.490.000₫</span>
-                                        <span class="label--on-sale">-21%</span>			
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-                <div id="pagenumber4" style="clear: both;" align="center">
-                    
+                <div class="hang">
+                    <div class="congdung">| LAPTOP THIẾT KẾ - ĐỒ HỌA</div>
+                    <ul class="nhan">
+                        <li> MSI</li>
+                        <li> DELL </li>
+                        <li> ASUS </li>
+                        <li> HP </li>
+                        <li> LENOVO </li>
+                        <li> ACER</li>
+                        <li> APPLE </li>
+                    </ul>
+                </div>  
+                <div class="container-dohoa" id="container-dohoa">
+                    <div class="list1-dohoa" id="list-dohoa"></div>
+                    <div class="listPage-dohoa" id="pagenumber-dohoa"></div>
                 </div>
             </div>
             <div class="show">
@@ -1142,6 +1081,123 @@
         <div style="clear: both; height: 120px; background-color: beige;">FOOTER
         </div>
     </div>
+    <script>
+        var ArrayListProductssss = [
+            {
+                id:"0001",
+                thuonghieu:"Asus",
+                phanloai:"doanhnhan",
+                img: "./css/image/vp1.webp",
+                doi: "./css/image/vp1.2.webp",
+                name: "ASUS VivoBook 14 OLED A1405VA-KM095W (14' 2.8K OLED 100% DCI-P3 | Win 11)",
+                cpu: "Intel Core i5",
+                ram: "16G DDR4 3200MHz",
+                ssd: "512 PCIe NVMe",
+                vga: " RTX 3050 Ti",
+                pricecompare: "17,990,000",
+                giam: "-20%",
+            },
+            {
+                id:"0002",
+                thuonghieu:"Asus",
+                phanloai:"dohoa",
+                img: "./css/image/vp2.webp",
+                doi: "./css/image/vp2.webp",
+                name: "ASUS VivoBook 14 OLED M1405YA-KM047W (14' 2.8K OLED | Win 11)",
+                cpu: "AMD Ryzen 5",
+                ram: "8G DDR4 3200MHz",
+                ssd: "512 PCIe NVMe",
+                vga: " RTX 3050 Ti",
+                pricecompare: "17,490,000",
+                giam: "-20%",
+            },
+            {
+                id:"0003",
+                thuonghieu:"Asus",
+                phanloai:"gaming",
+                img: "./css/image/vp3.png",
+                doi: "./css/image/vp3.2.webp",
+                name: "ASUS VivoBook 15 OLED A1505VA-L1113W (15.6' FHD OLED | Win 11)",
+                cpu: "Intel Core i5 1335U",
+                ram: "16G DDR4 3200MHz",
+                ssd: "512 PCIe NVMe",
+                vga: " RTX 3050 Ti",
+                pricecompare: "17,490,000",
+                giam: "-20%",
+            },
+            {
+                id:"0004",
+                thuonghieu:"Asus",
+                phanloai:"gaming",
+                img: "./css/image/vp4.png",
+                doi: "./css/image/vp4.2.png",
+                name: "ASUS VivoBook Pro 16 OLED K6602VV-MX077W (16' 3.2K OLED 120Hz | Win 11)",
+                cpu: "Intel Core i9",
+                ram: "16G DDR4 4800MHz",
+                ssd: "1 TB M.2 PCIe NVMe",
+                vga: " RTX 3050 Ti",
+                pricecompare: "43,490,000",
+                giam: "-20%",
+            },
+            {
+                id:"0005",
+                thuonghieu:"Asus",
+                phanloai:"doanhnhan",
+                img: "./css/image/vp5.webp",
+                doi: "./css/image/vp5.2.webp",
+                name: "Asus Vivobook X413JA-211VBWB I3-1005G1 4GB 128GB SSD 14 FHD W10",
+                cpu: "Intel Core i3 1005G1",
+                ram: "4G DDR4 2666Hz",
+                ssd: "128GB PCIe NVMe",
+                vga: " RTX 3050 Ti",
+                pricecompare: "15,000,000",
+                giam: "-20%",
+            }
+        ];
+        ListSellingProductsssss('gaming', 'list-gaming');
+        ListSellingProductsssss('doanhnhan', 'list-doanhnhan');
+        ListSellingProductsssss('dohoa', 'list-dohoa');
+        function ListSellingProductsssss(category, targetElementId) {
+            var listphanloai = '';
+            for (var i = 0; i <ArrayListProductssss.length; i++) {
+                   var product = ArrayListProductssss[i];
+                if (!(product.phanloai === category)) {
+            continue;
+            }
+            listphanloai += `
+                        <div class="itemproduct" id = "itemproduct">
+                            <div>
+                                <a href="#">
+                                    <img src="${product.img}" class="anh" data-doi="${product.doi}"/>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="title" title="${product.name}">${product.name}</div>
+                                <div class="cpu"><img src="./sua/css/image/cpu.png" width="9%">
+                                    <span>&nbsp; ${product.cpu}</span>
+                                </div>
+                                <div class="ram"><img src="./css/image/ram.png" width="9%">
+                                    <span>&nbsp; ${product.ram}</span>
+                                </div>
+                                <div class="ssd"><img src="./css/image/ssd.png" width="7%">
+                                    <span>&nbsp; ${product.ssd}</span>
+                                </div>
+                                <div class="vga"><img src="./css/image/vga-card.png" width="8%">
+                                    <span>&nbsp; ${product.vga}</span>
+                                </div>
+                                <div class="price">
+                                    <del class="price-item" id="price">${product.pricecompare}₫</del>
+                                    <div class="price--default">
+                                        <span class="price--highlight" id="sale-price"></span>
+                                        <span class="label--on-sale" id="label-sale">${product.giam}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+            }
+            document.getElementById(targetElementId).innerHTML = listphanloai;
+          }
+    </script>
     <script src="./js/login_header.js"></script>
     <script src="./js/cart_header.js"></script>
     <script src="./js/listactive.js"></script> 

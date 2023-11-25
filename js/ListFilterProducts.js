@@ -1,5 +1,7 @@
-function ListSellingProductssss(filterthuonghieu = [], filtergiaban = [], filtercpu = [], filtervga = []) {
-    let s = `<div class="item-selling-products" id="item-selling-products">`;
+//Lấy giá trị mảng sản phẩm từ LocalStorage
+const mangdaloc = JSON.parse(localStorage.getItem('filteredProducts'));
+function ListSellingProductsss(filterthuonghieu = [], filtergiaban = [], filtercpu = [], filtervga = []) {
+    let s ='';
     for (let i = 0; i < mangdaloc.length; i++) {
         const product = mangdaloc[i];
         var anh = product.img;
@@ -78,12 +80,10 @@ function ListSellingProductssss(filterthuonghieu = [], filtergiaban = [], filter
                 </div>
             </div>`;
     }
-  
-    s += `</div>`;
     document.getElementById("item-selling-products").innerHTML = s;
 }
 
-const urlParams = new URLSearchParams(window.location.searcah);
+const urlParams = new URLSearchParams(window.location.search);
 const filterTerm = urlParams.get('Filter');
 
 function filteritem() {
@@ -113,7 +113,7 @@ function filteritem() {
     }
 
 
-    ListSellingProductssss(filterthuonghieu,filtergiaban, filtercpu, filtervga);  
+    ListSellingProductsss(filterthuonghieu,filtergiaban, filtercpu, filtervga);  
 
     console.log(filterthuonghieu);
     console.log(filtergiaban);
