@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="./cssDoAn/listlaptop.css">
     <link rel="stylesheet" href="./cssDoAn/listncsd.css">
     <link rel="stylesheet" href="./cssDoAn/listdaquasudung.css">
-    <script src="./js/script[1].js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <style>
         .hang{
@@ -61,9 +60,9 @@
         #list-gaming{
             width: 100%;
             display: flex;
-            border: solid red 2px;
             flex-wrap: wrap;
             justify-content: start;
+            
         }
         .listPage-gaming{
             padding: 10px;
@@ -89,7 +88,6 @@
         #list-doanhnhan {
             width: 100%;
             display: flex;
-            border: solid red 2px;
             flex-wrap: wrap;
             justify-content: start;
         }
@@ -117,7 +115,6 @@
         #list-dohoa{
             width: 100%;
             display: flex;
-            border: solid red 2px;
             flex-wrap: wrap;
             justify-content: start;
         }
@@ -169,22 +166,50 @@
              margin-top: 10px;
              margin-bottom: 10px;
          }
-         .price--highlight{
-             font-weight: bold;
-             color: red;
-         }
-         .label--on-sale{
-             padding: 0 4px;
-             background: red;
-             border-radius: 3px;
-             color:white;
-             border: 1px solid #E30019;
-             line-height: 16px;
-             font-size: 13px; 
-         }
          .itemproduct{
             width: 19%;
+            margin: 5px;
+            border: 1px solid rgb(222, 225, 230);
+            border-radius: 5px;
          }
+         .map{
+    width: 6%;
+}
+.item{
+    width: 19%;
+    margin: 5px;
+    flex-direction: column;
+}
+#cpu{
+    margin-top: 10px; 
+    margin-left: 9px;
+    color: rgb(111, 111, 117);
+    display: flex;
+}
+#ram{
+    margin-top: 10px; 
+    margin-left: 10px;
+    color: rgb(111, 111, 117);
+    display: flex;
+}
+#ssd{
+    margin-top: 10px; 
+    margin-left: 10px;
+    color: rgb(111, 111, 117);
+    display: flex;
+}
+#vga{
+    margin-top: 10px; 
+    margin-left: 10px;
+    color: rgb(111, 111, 117);
+    display: flex;
+    margin-bottom: 10px;
+}
+.anh {
+    width:100%;
+    height:210px;
+    transition: width 0.3s ease;
+}
     </style>
 </head>
 <body>
@@ -314,10 +339,10 @@
                                     <div>
                                         <form id="customer_login">
                                             <div class="form-control">
-                                                <input type="email" placeholder="Email" name="customer[email]">
+                                                <input type="email" placeholder="Email" namemail="customer[email]">
                                             </div>
                                             <div class="form-control" bis_skin_checked="1">
-                                                <input type="password" placeholder="Mật khẩu" name="customer[password]">
+                                                <input type="password" placeholder="Mật khẩu" namemail="customer[password]">
                                             </div>
                                             <div class="form-control" bis_skin_checked="1">
                                                 <button type="submit" class="btn-submit" id="form_submit-login">Đăng nhập</button>
@@ -352,27 +377,27 @@
                     </div>
                     <div class="right_bottom_header">
                         <ul class="bottom_header_transition">
-                            <li>
+                            <li style="width: 20%;">
                                 <span class="box-icon">
-                                    <i id="baohanh" class="fa-regular fa-handshake" style="color: #202124;"></i>
+                                    <img src="./image/icon1.webp" width="30px">
                                 </span>
                                 <p id="menuright_bottom" class="box-text">Chính sách bảo hành</p>
                             </li>
-                            <li>
+                            <li style="width: 14%;">
                                 <span class="box-icon">
-                                    <i id="khuyenmai" class="fa-solid fa-money-check-dollar" style="color: #202124;"></i>
+                                    <img src="./image/icon2.webp" width="30px">
                                 </span>
                                 <p id="menuright_bottom" class="box-text">Khuyến mãi</p>
                             </li>
-                            <li>
+                            <li style="width: 12%;">
                                 <span class="box-icon">
-                                    <i id="tragop" class="fa-solid fa-hand-holding-dollar" style="color: #202124;"></i>
+                                    <img src="./image/icon3.webp" width="30px">
                                 </span>
                                 <p id="menuright_bottom" class="box-text">Trả góp</p>
                             </li>
-                            <li>
+                            <li style="width: 15%;">
                                 <span class="box-icon">
-                                    <i id="tin" class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                    <img src="./image/icon4.webp" width="30px">
                                 </span>
                                 <p id="menuright_bottom" class="box-text">Tin công nghệ</p>
                             </li>
@@ -400,7 +425,7 @@
                                 </a>
                             </li> 
                             <li class="MenuC" id="laptop">
-                                <a class="list-menu-leftshow" onclick="handleeFilterFileresult(this)" value="'Laptop">
+                                <a class="list-menu-leftshow" onclick="handleeFilterFileresult(this)" value="Laptop">
                                     <span class="box-icon">
                                         <img width="24" height="24" src="./image/giohang.png" alt="Giỏ hàng">
                                     </span>
@@ -566,16 +591,13 @@
                         <div class="menu-ncsd-content" id="list-nhucausudung">
                             <ul class="ncsd-container-ul">
                                 <li>
-                                    <a href="#" onclick="handleeFilterFileresult(this)" value="gaming">Hiệu năng - Gaming</a>
+                                    <a href="#" id="textphanloai" onclick="handleeFilterFileresult(this)" value="gaming">Hiệu năng - Gaming</a>
                                 </li>
                                 <li>
-                                    <a href="#" onclick="handleeFilterFileresult(this)" value="doanhnhan">Doanh nhân - Bền bỉ</a>
+                                    <a href="#" id="textphanloai" onclick="handleeFilterFileresult(this)" value="doanhnhan">Doanh nhân - Bền bỉ</a>
                                 </li>
                                 <li>
-                                    <a href="#" onclick="handleeFilterFileresult(this)" value="dohoa">Đồ họa - thiết kế</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="handleeFilterFileresult(this)" value="vanphong">Văn phòng - học tập</a>
+                                    <a href="#" id="textphanloai" onclick="handleeFilterFileresult(this)" value="dohoa">Đồ họa - thiết kế</a>
                                 </li>
                             </ul>
                         </div>
@@ -625,7 +647,7 @@
                 <div class="container-logo">
                     <div>
                         <div class="d-flex-logo" style="display: flex; justify-content: center; margin-right: 40px;">
-                            <div class="item-banner-hover">
+                            <div class="item-banner-hover" onclick="handleeFilterFileresult(this)" value ="ACER">
                                 <div class="box-cat">
                                     <a href="#">
                                         <img src="./image/acer.png" alt="acer">
@@ -633,7 +655,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="item-banner-hover">
+                            <div class="item-banner-hover" onclick="handleeFilterFileresult(this)" value ="ASUS">
                                 <div class="box-cat">
                                     <a href="#">
                                         <img src="./image/asus.png" alt="asus">
@@ -641,7 +663,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="item-banner-hover">
+                            <div class="item-banner-hover" onclick="handleeFilterFileresult(this)" value ="LENOVO">
                                 <div class="box-cat">
                                     <a href="#">
                                         <img src="./image/lenovo.png" alt="lenovo">
@@ -649,7 +671,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="item-banner-hover">
+                            <div class="item-banner-hover" onclick="handleeFilterFileresult(this)" value ="DELL">
                                 <div class="box-cat">
                                     <a href="#">
                                         <img src="./image/dell..png" alt="dell">
@@ -657,7 +679,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="item-banner-hover">
+                            <div class="item-banner-hover" onclick="handleeFilterFileresult(this)" value ="HP">
                                 <div class="box-cat">
                                     <a href="#">
                                         <img src="./image/hp.png" alt="hp">
@@ -665,7 +687,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="item-banner-hover">
+                            <div class="item-banner-hover" onclick="handleeFilterFileresult(this)" value ="MSI">
                                 <div class="box-cat">
                                     <a href="#">
                                         <img src="./image/msi.png" alt="msi">
@@ -673,7 +695,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="item-banner-hover">
+                            <div class="item-banner-hover" onclick="handleeFilterFileresult(this)" value ="APPLE">
                                 <div class="box-cat">
                                     <a href="#">
                                         <img src="./image/apple.png" alt="apple">
@@ -761,46 +783,6 @@
                         </div>
                     </div>
                 </div>
-            <!--    <div class="selling-products">
-                    <div class="item-selling-products" id="item-selling-products">
-                        <div class="item-show-search"> 
-                            <a href="#">
-                                <img src="./image/selling-products.webp">
-                            </a>
-                            <div class="detial">
-                                <h3 class="name-product">
-                                    <a id="name" href="#">Laptop LG Gram 2023 14Z90R GAH53A5</a>
-                                </h3>
-                                <div class="technical">
-                                    <div class="cpu">
-                                        <span>i5-1340P</span>
-                                    </div>
-                                    <div class="vga">
-                                        <span>Onboard</span>
-                                    </div>
-                                    <div class="ram">
-                                        <span>16 GB</span>
-                                    </div>
-                                    <div class="ssd">
-                                        <span>256 GB</span>
-                                    </div>
-                                    <div class="lcd">
-                                        <span>14 inch FHD+ IPS</span>
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <div class="price--compare"><del>32.490.000₫</del></div>
-                                    <div class="price--default">
-                                        <span class="price--highlight">25.490.000₫</span>
-                                        <span class="label--on-sale">-21%</span>			
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-                <div id="testpage" style="clear: both;" align="center">
-                </div> -->   
             </div> 
             <!--Laptop Gaming-->
             <div class="selling-show-gaming" id="selling-show-gaming">
@@ -932,14 +914,28 @@
                             </div>
                         </div>
                     </li>
-                    <li id="filtermausac" class="title">
-                        <div class="item-checkbox" id="item-mausac">
-                            <p>Màu sắc</p>
+                    <li id="filterssd" class="title">
+                        <div class="item-checkbox" id="item-ssd">
+                            <p>SSD</p>
                         </div>
-                        <div class="group-filter" id="group-filter-mausac">
+                        <div class="group-filter" id="group-filter-ssd">
                             <div class="layer-content" id="layer-content">
-                                <ul id="listmausac-checkbox" class="listcheckbox">
-                                    <li></li>
+                                <ul id="listssd-checkbox" class="listcheckbox">
+                                    <li>
+                                        <label id="label-item-search">
+                                            <input type="checkbox" onchange="filteritem()" class="ssd" value="512">512GB
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label id="label-item-search">
+                                            <input type="checkbox" onchange="filteritem()" class="ssd" value="1TB">1TB
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label id="label-item-search">
+                                            <input type="checkbox" onchange="filteritem()" class="ssd" value="2TB">2TB
+                                        </label>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -1062,13 +1058,8 @@
                         </div>
                     </li>
                 </ul>  
-                <div class="result-filter-tag">
-                    <div class="tilte-header">Đang lọc theo: </div>
-                    <ul id="result-filter-full"></ul>
-                </div>
             </div>
             <div class="container-search-products">
-                <h1>Kết quả tìm kiếm</h1> 
                 <div id="filter-result"></div>
                 <div class="selling-products">
                     <div class="item-selling-products" id="item-selling-products">  
@@ -1081,130 +1072,14 @@
         <div style="clear: both; height: 120px; background-color: beige;">FOOTER
         </div>
     </div>
-    <script>
-        var ArrayListProductssss = [
-            {
-                id:"0001",
-                thuonghieu:"Asus",
-                phanloai:"doanhnhan",
-                img: "./css/image/vp1.webp",
-                doi: "./css/image/vp1.2.webp",
-                name: "ASUS VivoBook 14 OLED A1405VA-KM095W (14' 2.8K OLED 100% DCI-P3 | Win 11)",
-                cpu: "Intel Core i5",
-                ram: "16G DDR4 3200MHz",
-                ssd: "512 PCIe NVMe",
-                vga: " RTX 3050 Ti",
-                pricecompare: "17,990,000",
-                giam: "-20%",
-            },
-            {
-                id:"0002",
-                thuonghieu:"Asus",
-                phanloai:"dohoa",
-                img: "./css/image/vp2.webp",
-                doi: "./css/image/vp2.webp",
-                name: "ASUS VivoBook 14 OLED M1405YA-KM047W (14' 2.8K OLED | Win 11)",
-                cpu: "AMD Ryzen 5",
-                ram: "8G DDR4 3200MHz",
-                ssd: "512 PCIe NVMe",
-                vga: " RTX 3050 Ti",
-                pricecompare: "17,490,000",
-                giam: "-20%",
-            },
-            {
-                id:"0003",
-                thuonghieu:"Asus",
-                phanloai:"gaming",
-                img: "./css/image/vp3.png",
-                doi: "./css/image/vp3.2.webp",
-                name: "ASUS VivoBook 15 OLED A1505VA-L1113W (15.6' FHD OLED | Win 11)",
-                cpu: "Intel Core i5 1335U",
-                ram: "16G DDR4 3200MHz",
-                ssd: "512 PCIe NVMe",
-                vga: " RTX 3050 Ti",
-                pricecompare: "17,490,000",
-                giam: "-20%",
-            },
-            {
-                id:"0004",
-                thuonghieu:"Asus",
-                phanloai:"gaming",
-                img: "./css/image/vp4.png",
-                doi: "./css/image/vp4.2.png",
-                name: "ASUS VivoBook Pro 16 OLED K6602VV-MX077W (16' 3.2K OLED 120Hz | Win 11)",
-                cpu: "Intel Core i9",
-                ram: "16G DDR4 4800MHz",
-                ssd: "1 TB M.2 PCIe NVMe",
-                vga: " RTX 3050 Ti",
-                pricecompare: "43,490,000",
-                giam: "-20%",
-            },
-            {
-                id:"0005",
-                thuonghieu:"Asus",
-                phanloai:"doanhnhan",
-                img: "./css/image/vp5.webp",
-                doi: "./css/image/vp5.2.webp",
-                name: "Asus Vivobook X413JA-211VBWB I3-1005G1 4GB 128GB SSD 14 FHD W10",
-                cpu: "Intel Core i3 1005G1",
-                ram: "4G DDR4 2666Hz",
-                ssd: "128GB PCIe NVMe",
-                vga: " RTX 3050 Ti",
-                pricecompare: "15,000,000",
-                giam: "-20%",
-            }
-        ];
-        ListSellingProductsssss('gaming', 'list-gaming');
-        ListSellingProductsssss('doanhnhan', 'list-doanhnhan');
-        ListSellingProductsssss('dohoa', 'list-dohoa');
-        function ListSellingProductsssss(category, targetElementId) {
-            var listphanloai = '';
-            for (var i = 0; i <ArrayListProductssss.length; i++) {
-                   var product = ArrayListProductssss[i];
-                if (!(product.phanloai === category)) {
-            continue;
-            }
-            listphanloai += `
-                        <div class="itemproduct" id = "itemproduct">
-                            <div>
-                                <a href="#">
-                                    <img src="${product.img}" class="anh" data-doi="${product.doi}"/>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="title" title="${product.name}">${product.name}</div>
-                                <div class="cpu"><img src="./sua/css/image/cpu.png" width="9%">
-                                    <span>&nbsp; ${product.cpu}</span>
-                                </div>
-                                <div class="ram"><img src="./css/image/ram.png" width="9%">
-                                    <span>&nbsp; ${product.ram}</span>
-                                </div>
-                                <div class="ssd"><img src="./css/image/ssd.png" width="7%">
-                                    <span>&nbsp; ${product.ssd}</span>
-                                </div>
-                                <div class="vga"><img src="./css/image/vga-card.png" width="8%">
-                                    <span>&nbsp; ${product.vga}</span>
-                                </div>
-                                <div class="price">
-                                    <del class="price-item" id="price">${product.pricecompare}₫</del>
-                                    <div class="price--default">
-                                        <span class="price--highlight" id="sale-price"></span>
-                                        <span class="label--on-sale" id="label-sale">${product.giam}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
-            }
-            document.getElementById(targetElementId).innerHTML = listphanloai;
-          }
-    </script>
     <script src="./js/login_header.js"></script>
     <script src="./js/cart_header.js"></script>
     <script src="./js/listactive.js"></script> 
     <script src="./js/listdaquasudung.js"></script>
     <script src="./js/Locsanpham.js"></script>
-    <script src="./js/ListSearchProducts.js"></script>
+  <!--  <script src="./js/ListSearchProducts.js"></script>  -->
     <script src="./js/ListFilterProducts.js"></script>
+    <script src="./js/Phanloai.js"></script>
     <script src="./js/gaming.js"></script>
     <script src="./js/filterproducts.js"></script>
     <script src="./js/phantrang.js"></script>

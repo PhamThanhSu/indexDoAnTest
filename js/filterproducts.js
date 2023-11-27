@@ -4,8 +4,8 @@ var groupfilterthuonghieu = document.getElementById('group-filter-thuonghieu');
 var listgia = document.getElementById('item-gia');
 var groupfiltergia = document.getElementById('group-filter-gia');
 
-var listmausac = document.getElementById('item-mausac');
-var groupfiltermausac = document.getElementById('group-filter-mausac');
+var listssd = document.getElementById('item-ssd');
+var groupfilterssd = document.getElementById('group-filter-ssd');
 
 var listcpu = document.getElementById('item-cpu');
 var groupfiltercpu = document.getElementById('group-filter-cpu');
@@ -33,13 +33,13 @@ listgia.addEventListener('click', function(){
     }
 });
 
-listmausac.addEventListener('click', function(){
-    if ( groupfiltermausac.style.display === 'none') {
+listssd.addEventListener('click', function(){
+    if ( groupfilterssd.style.display === 'none') {
         // Hiển thị cửa sổ nếu nó đang ẩn
-        groupfiltermausac.style.display = 'block';
+        groupfilterssd.style.display = 'block';
     } else {
         // Ẩn cửa sổ nếu nó đang hiển thị
-        groupfiltermausac.style.display = 'none';
+        groupfilterssd.style.display = 'none';
     }
 });
 

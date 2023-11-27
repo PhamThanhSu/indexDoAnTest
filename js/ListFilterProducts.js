@@ -1,20 +1,20 @@
 //Lấy giá trị mảng sản phẩm từ LocalStorage
 const mangdaloc = JSON.parse(localStorage.getItem('filteredProducts'));
-function ListSellingProductsss(filterthuonghieu = [], filtergiaban = [], filtercpu = [], filtervga = []) {
+function ListSellingProductsss(filterthuonghieu = [], filtergiaban = [], filtercpu = [], filtervga = [], filterssd = []) {
     let s ='';
     for (let i = 0; i < mangdaloc.length; i++) {
         const product = mangdaloc[i];
         var anh = product.img;
-        var thuonghieu = product.thuonghieu;
+        var doi = product.doi;
+        var thuonghieu = product.thuonghieu.toUpperCase();
+        var phanloai = product.phanloai;
         var name = product.name;
-        var cpu = product.cpu;  
+        var cpu = product.cpu;
         var ram = product.ram;
         var ssd = product.ssd;
         var vga = product.vga;
         var lcd = product.lcd;
         var pricecompare = product.pricecompare;
-        var pricehighlight = product.pricehighlight;
-        var labelonsale = product.labelonsale;
 
         console.log('filter.thuonghieu.length');
         if (filterthuonghieu.length > 0) {
@@ -23,64 +23,61 @@ function ListSellingProductsss(filterthuonghieu = [], filtergiaban = [], filterc
         }
 
         if (filtergiaban.length > 0) {
-            if (pricehighlight < 10000000 && !filtergiaban.includes('1')) continue;
-            if (pricehighlight >= 10000000 && pricehighlight <= 15000000 && !filtergiaban.includes('2')) continue;
-            if (pricehighlight > 15000000 && pricehighlight <= 25000000 && !filtergiaban.includes('3')) continue;
-            if (pricehighlight > 25000000 && !filtergiaban.includes('4')) continue;
+            if (removeCommas(pricecompare) < 10000000 && !filtergiaban.includes('1')) continue;
+            if (removeCommas(pricecompare) >= 10000000 && removeCommas(pricecompare) <= 15000000 && !filtergiaban.includes('2')) continue;
+            if (removeCommas(pricecompare) > 15000000 && removeCommas(pricecompare) <= 25000000 && !filtergiaban.includes('3')) continue;
+            if (removeCommas(pricecompare) > 25000000 && !filtergiaban.includes('4')) continue;
         }
 
         if (filtercpu.length > 0) {
-           if(filtercpu.includes(cpu) == false)
+           if(cpu.includes(filtercpu) == false)
              continue;
         }
 
-        if (filtervga.length > 0) {
-            if(filtervga.includes(vga) == false)
+        if (filterssd.length > 0) {
+            if(ssd.includes(filterssd) == false)
+              continue;
+         }
+         if (filtervga.length > 0) {
+            if(vga.includes(filtervga) == false)
               continue;
          }
         if(filterthuonghieu.length > 0 || filtergiaban.length > 0 || filtercpu.length > 0 || filtergiaban.length > 0)
         textss = document.getElementById('filter-result');
         textss.innerHTML = "Laptop";
        
-        s += `
-            <div class="item-show-filter" id="item-show">
-                <a href="#">
-                    <img src="${anh}" width="100%"/>
-                </a>
-                <div class="detail">
-                    <h3 class="name-product">
-                        <a id="name" href="#" title="${name}" tabindex="0">${name}</a>
-                    </h3>
-                    <div class="technical">
-                        <div class="cpu">
-                            <span>${cpu}</span>
-                        </div>
-                        <div class ="vga">
-                            <span>${vga}</span>
-                        </div>
-                        <div class="ram">
-                            <span>${ram}</span>
-                        </div>
-                        <div class="ssd">
-                            <span>${ssd}</span>
-                        </div>
-                        <div class="lcd">
-                            <span>${lcd}</span>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <div class="price--compare">
-                            <del>${pricecompare}</del>
-                        </div>
-                        <div class="price--default">
-                            <span class="pricehighlight">${pricehighlight}</span>
-                            <span class="label--on-sale">${labelonsale}</span>
-                        </div>
-                    </div>
+        s+=`<div class="itemproduct" id = "itemproduct">
+                <div>
+                    <a href="#">
+                        <img src="${anh}" class="anh" data-doi="${doi}" style="width: 100%; height: 210px;"/>
+                    </a>
                 </div>
-            </div>`;
+                <div class="content">
+                    <div class="title" title="${product.name}">${name}</div>
+                    <div id="cpu"><img src="./sua/css/image/cpu.png" width="9%">
+                        <span>&nbsp; ${cpu}</span>
+                    </div>
+                    <div id="ram"><img src="./css/image/ram.png" width="9%">
+                        <span>&nbsp; ${ram}</span>
+                    </div>                    
+                    <div id="ssd"><img src="./css/image/ssd.png" width="7%">
+                        <span>&nbsp; ${ssd}</span>
+                    </div>                    
+                    <div id="vga"><img src="./css/image/vga-card.png" width="8%">
+                        <span>&nbsp; ${vga}</span>
+                    </div>                    
+                    <div id="price">
+                        <span id="price-item" id="price">${pricecompare}₫</span>
+                    </div>                    
+                </div>
+            </div>`;   
     }
     document.getElementById("item-selling-products").innerHTML = s;
+    var elements = document.querySelectorAll('.anh');
+
+    elements.forEach(function (element) {
+      handleImageHover(element);
+    });
 }
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -112,14 +109,21 @@ function filteritem() {
         if(arrvga[i].checked) filtervga.push(arrvga[i].value);
     }
 
+    var arrssd = document.getElementsByClassName("ssd");
+    var filterssd = [];
+    for(var i=0; i< arrssd.length; i++){
+        if(arrssd[i].checked) filterssd.push(arrssd[i].value);
+    }
 
-    ListSellingProductsss(filterthuonghieu,filtergiaban, filtercpu, filtervga);  
+    ListSellingProductsss(filterthuonghieu,filtergiaban, filtercpu, filtervga, filterssd);  
 
     console.log(filterthuonghieu);
     console.log(filtergiaban);
 }
-
-
+//Hàm bỏ dấu phẩy
+function removeCommas(inputString) {
+    return inputString.replace(/,/g, '');
+}
 
 
 //Mảng giá trị lọc

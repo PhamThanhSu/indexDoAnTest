@@ -472,7 +472,9 @@ li label{
 }
 
 #filter-result{
-    font-size: 23px;
+    font-size: 25px;
+    padding: 20px;
+    font-weight: 600;
 }
 #message{
     width: 85%;
